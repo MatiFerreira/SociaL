@@ -1,4 +1,4 @@
-package es.proyect.besocial.presentation.Component
+package es.proyect.besocial.presentation.Components.LoginComponent
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.size

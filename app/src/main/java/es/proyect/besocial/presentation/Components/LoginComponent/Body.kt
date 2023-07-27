@@ -1,4 +1,4 @@
-package es.proyect.besocial.presentation.Component
+package es.proyect.besocial.presentation.Components.LoginComponent
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -36,7 +36,7 @@ import es.proyect.besocial.presentation.Login.LoginViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BodyL(viewModel: LoginViewModel = hiltViewModel()) {
+fun BodyL(viewModel: LoginViewModel) {
     //DECLARAMOS LOS VALORES Y OBSERVAMOS ESTOS PARA LA COMPROBACION DE DATOS
     //recoger datos metodo le damos unos iniciales
     val emailState: String by viewModel.email.observeAsState(initial = "")

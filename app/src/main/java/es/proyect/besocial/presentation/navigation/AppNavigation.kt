@@ -15,7 +15,7 @@ fun AppNavegation(navigation: NavHostController) {
         startDestination = Screen.Login.route
     ) {
         composable(route = Screen.Login.route) {
-            LoginView(navigation, viewModel = LoginViewModel())
+            LoginView(navigation)
         }
         composable(route = Screen.Register.route) {
             RegisterView(navigation)

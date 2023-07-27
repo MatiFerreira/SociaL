@@ -39,6 +39,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import es.proyect.besocial.R
 import es.proyect.besocial.presentation.Login.TopBar
@@ -53,13 +54,15 @@ fun RegisterView(navigation: NavHostController) {
     ) {
         TopBar()
         HeaderR()
-        BodyR(viewModel = RegisterViewModel(), navigation)
+        BodyR(navigation)
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BodyR(viewModel: RegisterViewModel, navigation: NavHostController) {
+fun BodyR(
+    navigation: NavHostController, viewModel: RegisterViewModel = hiltViewModel()
+) {
     var showPassword by rememberSaveable {
         mutableStateOf(true)
     }

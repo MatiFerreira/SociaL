@@ -8,8 +8,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
 import es.proyect.besocial.presentation.navigation.Screen
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RegisterViewModel : ViewModel() {
+class RegisterViewModel @Inject constructor() : ViewModel() {
     //aqui donde guardamos los datos de la aplicacion
     private val _email = MutableLiveData<String>()
     private val _password = MutableLiveData<String>()

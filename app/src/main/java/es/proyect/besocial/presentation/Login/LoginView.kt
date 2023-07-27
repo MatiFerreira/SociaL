@@ -37,12 +37,13 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import es.proyect.besocial.R
 import es.proyect.besocial.presentation.navigation.Screen
 
 @Composable
-fun LoginView(navigation: NavHostController, viewModel: LoginViewModel) {
+fun LoginView(navigation: NavHostController) {
     val scrollvertical = rememberScrollState()
     Column(
         Modifier
@@ -53,7 +54,7 @@ fun LoginView(navigation: NavHostController, viewModel: LoginViewModel) {
         TopBar()
         Header()
         Spacer(modifier = Modifier.size(70.dp))
-        BodyL(viewModel)
+        BodyL()
         BottomL(navigation)
         Spacer(modifier = Modifier.size(80.dp))
     }
@@ -84,7 +85,7 @@ fun BottomL(navigation: NavHostController) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BodyL(viewModel: LoginViewModel) {
+fun BodyL(viewModel: LoginViewModel = hiltViewModel()) {
     //DECLARAMOS LOS VALORES Y OBSERVAMOS ESTOS PARA LA COMPROBACION DE DATOS
     //recoger datos metodo le damos unos iniciales
     val emailState: String by viewModel.email.observeAsState(initial = "")

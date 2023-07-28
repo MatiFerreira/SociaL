@@ -26,7 +26,7 @@ fun LoginView(navigation: NavHostController, viewModel: LoginViewModel = hiltVie
             .padding(20.dp)
             .verticalScroll(state = scrollvertical, enabled = true)
     ) {
-        TopBar()
+        TopBar(navigation)
         Header()
         Spacer(modifier = Modifier.size(70.dp))
         BodyL(viewModel)

@@ -32,6 +32,7 @@ class RegisterViewModel @Inject constructor() : ViewModel() {
         if (registerEnable.value == true) {
             viewModelScope.launch {
                 navcontroller.navigate(Screen.Login.route)
+
             }
         }
     }

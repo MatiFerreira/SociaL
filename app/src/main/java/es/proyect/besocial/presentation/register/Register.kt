@@ -21,7 +21,7 @@ fun RegisterView(navigation: NavHostController, viewModel: RegisterViewModel = h
             .fillMaxSize()
             .padding(20.dp)
     ) {
-        TopBar()
+        TopBar(navigation)
         HeaderR()
         BodyR(navigation, viewModel)
     }

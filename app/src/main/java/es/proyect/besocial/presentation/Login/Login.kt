@@ -29,7 +29,7 @@ fun LoginView(navigation: NavHostController, viewModel: LoginViewModel = hiltVie
         TopBar(navigation)
         Header()
         Spacer(modifier = Modifier.size(70.dp))
-        BodyL(viewModel)
+        BodyL(navigation, viewModel)
         BottomL(navigation)
         Spacer(modifier = Modifier.size(80.dp))
     }

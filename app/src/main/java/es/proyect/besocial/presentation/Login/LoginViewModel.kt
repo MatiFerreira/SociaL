@@ -56,4 +56,13 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase) :
             _loginFlow.value = signIn
         }
     }
+
+    val currentUser = authUseCase.getCurrentUser()
+
+    init {
+        if (currentUser != null) {
+            //is
+            _loginFlow.value = Response.Success(currentUser)
+        }
+    }
 }

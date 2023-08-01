@@ -21,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -38,13 +39,15 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import es.proyect.besocial.R
 import es.proyect.besocial.domain.model.Response
 import es.proyect.besocial.presentation.Login.LoginViewModel
+import es.proyect.besocial.presentation.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BodyL(viewModel: LoginViewModel) {
+fun BodyL(navController: NavController, viewModel: LoginViewModel) {
     //DECLARAMOS LOS VALORES Y OBSERVAMOS ESTOS PARA LA COMPROBACION DE DATOS
     //recoger datos metodo le damos unos iniciales
     val emailState = viewModel.email.value
@@ -140,7 +143,11 @@ fun BodyL(viewModel: LoginViewModel) {
             }
 
             is Response.Success -> {
-                Toast.makeText(LocalContext.current, "INCIANDO SESSION", Toast.LENGTH_LONG).show()
+                LaunchedEffect(Unit) {
+                    navController.navigate(route = Screen.Main.route) {
+                        popUpTo(Screen.Login.route) { inclusive = true }
+                    }
+                }
             }
 
             is Response.Failure -> {

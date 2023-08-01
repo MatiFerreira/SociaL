@@ -31,10 +31,6 @@ fun TopBar(navigation: NavHostController) {
                 modifier = Modifier
                     .size(34.dp)
                     .clickable {
-                        val beforeRoute = navigation.previousBackStackEntry?.destination?.route
-                        if (beforeRoute != null) {
-                            navigation.navigate(beforeRoute)
-                        }
                     }
             )
 

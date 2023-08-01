@@ -1,6 +1,7 @@
 package es.proyect.besocial.data.repository
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthRegistrar
 import com.google.firebase.auth.FirebaseUser
 import es.proyect.besocial.domain.model.Response
 import es.proyect.besocial.domain.repository.AuthRepository
@@ -20,4 +21,10 @@ class AuthRepositoryImplements @Inject constructor(private val firebaseAuth: Fir
             Response.Failure(e)
         }
     }
+
+    override fun logOut() {
+        firebaseAuth.signOut()
+    }
+
+
 }

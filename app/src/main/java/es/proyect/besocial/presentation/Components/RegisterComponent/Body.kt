@@ -48,10 +48,10 @@ fun BodyR(
     var showPassword by rememberSaveable {
         mutableStateOf(true)
     }
-    val emailstate: String by viewModel.email.observeAsState(initial = "")
-    val passwordstate: String by viewModel.password.observeAsState(initial = "")
-    val nickNamestate: String by viewModel.userName.observeAsState(initial = "")
-    val isRegisterstate: Boolean by viewModel.registerEnable.observeAsState(initial = false)
+    val emailstate = viewModel.email.value
+    val passwordstate = viewModel.password.value
+    val nickNamestate = viewModel.userName.value
+    val isRegisterstate = viewModel.registerEnable.value
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
@@ -138,7 +138,8 @@ fun BodyR(
             colors = ButtonDefaults.buttonColors(
                 contentColor = Color.White,
                 containerColor = Color.Black
-            )
+            ),
+            enabled = isRegisterstate
 
         ) {
             Text(

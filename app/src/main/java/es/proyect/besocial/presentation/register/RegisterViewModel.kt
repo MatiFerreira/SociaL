@@ -1,27 +1,33 @@
 package es.proyect.besocial.presentation.register
 
 import android.util.Patterns
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
-import es.proyect.besocial.presentation.navigation.Screen
+import com.google.firebase.auth.FirebaseUser
+import es.proyect.besocial.domain.model.Response
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class RegisterViewModel @Inject constructor() : ViewModel() {
+class RegisterViewModel @Inject constructor() :
+    ViewModel() {
     //aqui donde guardamos los datos de la aplicacion
-    private val _email = MutableLiveData<String>()
-    private val _password = MutableLiveData<String>()
-    private val _nameUser = MutableLiveData<String>()
-    private val _isRegisterEnable = MutableLiveData<Boolean>()
+    private val _email = mutableStateOf("")
+    private val _password = mutableStateOf("")
+    private val _nameUser = mutableStateOf("")
+    private val _isRegisterEnable = mutableStateOf(false)
+    private val _registerFlow = MutableStateFlow<Response<FirebaseUser>?>(null)
 
     //Almacenamos los datos que recibimos de fuera.
-    val email: LiveData<String> = _email
-    val password: LiveData<String> = _password
-    val userName: LiveData<String> = _nameUser
-    val registerEnable: LiveData<Boolean> = _isRegisterEnable
+    val email: MutableState<String> = _email
+    val password: MutableState<String> = _password
+    val userName: MutableState<String> = _nameUser
+    val registerEnable: MutableState<Boolean> = _isRegisterEnable
+    val regiterFlow: StateFlow<Response<FirebaseUser>?> = _registerFlow
 
     fun CheckInfo(email: String, password: String, nickname: String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()
@@ -29,11 +35,7 @@ class RegisterViewModel @Inject constructor() : ViewModel() {
     }
 
     fun isRegister(navcontroller: NavHostController) {
-        if (registerEnable.value == true) {
-            viewModelScope.launch {
-                navcontroller.navigate(Screen.Login.route)
-
-            }
+        viewModelScope.launch {
         }
     }
 

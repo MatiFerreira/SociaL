@@ -9,6 +9,7 @@ import es.proyect.besocial.data.repository.AuthRepositoryImplements
 import es.proyect.besocial.domain.repository.AuthRepository
 import es.proyect.besocial.domain.usecases.auth.AuthUseCase
 import es.proyect.besocial.domain.usecases.auth.GetCurrentUser
+import es.proyect.besocial.domain.usecases.auth.LogOut
 import es.proyect.besocial.domain.usecases.auth.Login
 
 @InstallIn(SingletonComponent::class)
@@ -27,5 +28,5 @@ object AppModule {
 
     @Provides
     fun provideAuthUseCases(repository: AuthRepository) =
-        AuthUseCase(getCurrentUser = GetCurrentUser(repository), login = Login(repository))
+        AuthUseCase(getCurrentUser = GetCurrentUser(repository), login = Login(repository), loginOut = LogOut(repository))
 }

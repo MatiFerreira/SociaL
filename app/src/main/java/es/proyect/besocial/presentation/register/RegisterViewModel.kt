@@ -5,15 +5,18 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavHostController
 import com.google.firebase.auth.FirebaseUser
+import dagger.hilt.android.lifecycle.HiltViewModel
 import es.proyect.besocial.domain.model.Response
+import es.proyect.besocial.domain.model.User
+import es.proyect.besocial.domain.usecases.auth.AuthUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class RegisterViewModel @Inject constructor() :
+@HiltViewModel
+class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase) :
     ViewModel() {
     //aqui donde guardamos los datos de la aplicacion
     private val _email = mutableStateOf("")
@@ -34,9 +37,21 @@ class RegisterViewModel @Inject constructor() :
                 && password.length > 6 && nickname.length > 5
     }
 
-    fun isRegister(navcontroller: NavHostController) {
+    fun isRegister(user: User) {
         viewModelScope.launch {
+            _registerFlow.value = Response.Loading
+            val results = authUseCase.signUp(user)
+            _registerFlow.value = results
         }
+    }
+
+    fun signUp() {
+        val user = User(
+            email = email.value,
+            nickName = _nameUser.value,
+            password = password.value
+        )
+        isRegister(user)
     }
 
     fun updateDataRegister(email: String, password: String, nickname: String) {

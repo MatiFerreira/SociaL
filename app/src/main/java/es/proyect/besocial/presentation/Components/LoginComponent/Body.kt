@@ -144,9 +144,8 @@ fun BodyL(navController: NavController, viewModel: LoginViewModel) {
 
             is Response.Success -> {
                 LaunchedEffect(Unit) {
-                    navController.navigate(route = Screen.Main.route) {
-                        popUpTo(Screen.Login.route) { inclusive = true }
-                    }
+                    navController.navigate(route = Screen.Main.route)
+                    navController.popBackStack(Screen.Login.route, true)
                 }
             }
 

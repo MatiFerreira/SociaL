@@ -31,6 +31,11 @@ fun TopBar(navigation: NavHostController) {
                 modifier = Modifier
                     .size(34.dp)
                     .clickable {
+                        navigation.navigate(Screen.Login.route) {
+                            popUpTo(Screen.Register.route) {
+                                inclusive = true
+                            }
+                        }
                     }
             )
 

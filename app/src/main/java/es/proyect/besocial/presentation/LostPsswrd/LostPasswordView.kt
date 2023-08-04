@@ -26,35 +26,25 @@ import es.proyect.besocial.R
 
 @Preview()
 @Composable
-fun MyLostPasswordView() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White)
-    ) {
-        HeaderLost()
+fun MyLossPaswrdView() {
+    Column(Modifier.fillMaxSize()) {
+        MyHeard()
+        MyBody()
+        MyBottom()
     }
-
 }
 
 @Composable
-fun HeaderLost() {
-    var name by rememberSaveable {
-        mutableStateOf("MATHIAS FERREIRA FERRERIA")
-    }
-    Column(
-        Modifier
-            .fillMaxWidth()
-            .background(Color.DarkGray)
-            .padding(top = 40.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = "WELCOME: " +
-                    "$name",
-            fontFamily = FontFamily(Font(R.font.inderregular)),
-            textAlign = TextAlign.Center
-        )
-    }
+fun MyBottom() {
+    TODO("Not yet implemented")
+}
 
+@Composable
+fun MyBody() {
+    TODO("Not yet implemented")
+}
+
+@Composable
+fun MyHeard() {
+    TODO("Not yet implemented")
 }

@@ -1,7 +1,8 @@
 package es.proyect.besocial.presentation.register
 
 import android.util.Patterns
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -23,18 +24,16 @@ class RegisterViewModel @Inject constructor(
 ) :
     ViewModel() {
     //aqui donde guardamos los datos de la aplicacion
-    private val _email = mutableStateOf("")
-    private val _password = mutableStateOf("")
-    private val _nameUser = mutableStateOf("")
-    private val _isRegisterEnable = mutableStateOf(false)
+    private var _email by mutableStateOf("")
+    private var _password by mutableStateOf("")
+    private var _nameUser by mutableStateOf("")
     private val _registerFlow = MutableStateFlow<Response<FirebaseUser>?>(null)
 
     //Almacenamos los datos que recibimos de fuera.
-    val email: MutableState<String> = _email
-    val password: MutableState<String> = _password
-    val userName: MutableState<String> = _nameUser
-    val registerEnable: MutableState<Boolean> = _isRegisterEnable
-    val regiterFlow: StateFlow<Response<FirebaseUser>?> = _registerFlow
+    var email by mutableStateOf(_email)
+    var password by mutableStateOf(_password)
+    var userName by mutableStateOf(_nameUser)
+    var regiterFlow: StateFlow<Response<FirebaseUser>?> = _registerFlow
 
     fun CheckInfo(email: String, password: String, nickname: String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()
@@ -51,18 +50,12 @@ class RegisterViewModel @Inject constructor(
 
     private var user = User()
     fun signUp() {
-        user.email = email.value
-        user.password = password.value
-        user.nickName = userName.value
+        user.email = email
+        user.password = password
+        user.nickName = userName
         isRegister(user)
     }
 
-    fun updateDataRegister(email: String, password: String, nickname: String) {
-        _email.value = email
-        _password.value = password
-        _nameUser.value = nickname
-        _isRegisterEnable.value = CheckInfo(email, password, nickname)
-    }
 
     fun createUser() =
         viewModelScope.launch {

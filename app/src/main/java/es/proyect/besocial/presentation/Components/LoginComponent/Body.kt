@@ -1,5 +1,6 @@
 package es.proyect.besocial.presentation.Components.LoginComponent
 
+import android.util.Patterns
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -47,9 +48,6 @@ import es.proyect.besocial.presentation.navigation.Screen
 fun BodyL(navController: NavController, viewModel: LoginViewModel) {
     //DECLARAMOS LOS VALORES Y OBSERVAMOS ESTOS PARA LA COMPROBACION DE DATOS
     //recoger datos metodo le damos unos iniciales
-    val emailState = viewModel.email.value
-    val passwrdState = viewModel.password.value
-    val isLoginEnable = viewModel.loadingEnable.value
     var showPassword by rememberSaveable {
         mutableStateOf(true)
     }
@@ -57,8 +55,10 @@ fun BodyL(navController: NavController, viewModel: LoginViewModel) {
 
     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         TextField(
-            value = emailState,
-            onValueChange = { viewModel.onLoginUpdate(email = it, password = passwrdState) },
+            value = viewModel.email,
+            onValueChange = {
+                viewModel.email = it
+            },
             label = { Text(text = "Username") },
             placeholder = { Text(text = "Username", fontSize = 20.sp, color = Color.DarkGray) },
             colors = TextFieldDefaults.textFieldColors(
@@ -77,12 +77,9 @@ fun BodyL(navController: NavController, viewModel: LoginViewModel) {
         )
         Spacer(modifier = Modifier.size(30.dp))
         TextField(
-            value = passwrdState,
+            value = viewModel.password,
             onValueChange = {
-                viewModel.onLoginUpdate(
-                    email = emailState,
-                    password = it
-                )
+                viewModel.password = it
             },
             label = { Text(text = "Password") },
             placeholder = { Text(text = "Password", fontSize = 20.sp, color = Color.DarkGray) },
@@ -118,7 +115,7 @@ fun BodyL(navController: NavController, viewModel: LoginViewModel) {
                 contentColor = Color.White,
                 containerColor = Color.Black
             ),
-            enabled = isLoginEnable
+            enabled = viewModel.CheckInfo(viewModel.email, viewModel.password)
 
         ) {
             Text(

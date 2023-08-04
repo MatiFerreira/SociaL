@@ -59,23 +59,16 @@ fun BodyR(
         mutableStateOf(true)
     }
     val flowregister = viewModel.regiterFlow.collectAsState()
-    val emailstate = viewModel.email.value
-    val passwordstate = viewModel.password.value
-    val nickNamestate = viewModel.userName.value
-    val isRegisterstate = viewModel.registerEnable.value
+
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         OutlinedTextField(
-            value = emailstate,
+            value = viewModel.email,
             onValueChange = {
-                viewModel.updateDataRegister(
-                    email = it,
-                    passwordstate,
-                    nickNamestate
-                )
+                viewModel.email = it
             },
             placeholder = { Text(text = "Enter Email id") }, leadingIcon = {
                 Icon(imageVector = Icons.Default.Email, contentDescription = "Email")
@@ -87,13 +80,9 @@ fun BodyR(
         Spacer(modifier = Modifier.size(30.dp))
 
         TextField(
-            value = nickNamestate,
+            value = viewModel.userName,
             onValueChange = {
-                viewModel.updateDataRegister(
-                    email = emailstate,
-                    passwordstate,
-                    nickname = it
-                )
+                viewModel.userName = it
             },
             placeholder = { Text(text = "Username") },
             label = { Text(text = "Create Username") },
@@ -113,13 +102,9 @@ fun BodyR(
         Spacer(modifier = Modifier.size(30.dp))
 
         TextField(
-            value = passwordstate,
+            value = viewModel.password,
             onValueChange = {
-                viewModel.updateDataRegister(
-                    email = emailstate,
-                    password = it,
-                    nickNamestate
-                )
+                viewModel.password = it
             },
             placeholder = { Text(text = "Password") },
             label = { Text(text = "Create Password") },
@@ -150,7 +135,7 @@ fun BodyR(
                 contentColor = Color.White,
                 containerColor = Color.Black
             ),
-            enabled = isRegisterstate
+            enabled = viewModel.CheckInfo(viewModel.email, viewModel.password, viewModel.userName)
 
         ) {
             Text(

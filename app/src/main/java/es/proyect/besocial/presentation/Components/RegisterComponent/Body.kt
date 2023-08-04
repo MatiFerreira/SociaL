@@ -174,6 +174,7 @@ fun BodyR(
 
             is Response.Success -> {
                 LaunchedEffect(Unit) {
+                    viewModel.createUser()
                     navigation.popBackStack(Screen.Login.route, true)//para eliminar historial
                     navigation.navigate(Screen.Login.route)
                 }

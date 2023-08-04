@@ -25,7 +25,9 @@ fun BottomL(navigation: NavHostController) {
         Text(text = "Olvidaste Tu Contraseña?",
             fontSize = 15.sp, color = Color.Gray,
             modifier = Modifier
-                .clickable { /*TODO*/ }
+                .clickable {
+                    navigation.navigate(Screen.Lost.route)
+                }
         )
 
         Spacer(modifier = Modifier.size(16.dp))

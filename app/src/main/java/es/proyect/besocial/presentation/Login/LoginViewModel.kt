@@ -1,27 +1,24 @@
 package es.proyect.besocial.presentation.Login
 
-import android.util.Log
 import android.util.Patterns
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import es.proyect.besocial.domain.model.Response
 import es.proyect.besocial.domain.usecases.auth.AuthUseCase
-import es.proyect.besocial.domain.usecases.auth.Login
+
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase)
-    : ViewModel() {
+class LoginViewModel @Inject constructor(
+    private val authUseCase: AuthUseCase,
+) : ViewModel() {
 
     private val _email = mutableStateOf("")
     private val _password = mutableStateOf("")

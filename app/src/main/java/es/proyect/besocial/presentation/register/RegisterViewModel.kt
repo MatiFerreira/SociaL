@@ -10,13 +10,17 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import es.proyect.besocial.domain.model.Response
 import es.proyect.besocial.domain.model.User
 import es.proyect.besocial.domain.usecases.auth.AuthUseCase
+import es.proyect.besocial.domain.usecases.users.UserUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase) :
+class RegisterViewModel @Inject constructor(
+    private val authUseCase: AuthUseCase,
+    private val userUseCase: UserUseCase
+) :
     ViewModel() {
     //aqui donde guardamos los datos de la aplicacion
     private val _email = mutableStateOf("")
@@ -45,12 +49,11 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
         }
     }
 
+    private var user = User()
     fun signUp() {
-        val user = User(
-            email = email.value,
-            nickName = _nameUser.value,
-            password = password.value
-        )
+        user.email = email.value
+        user.password = password.value
+        user.nickName = userName.value
         isRegister(user)
     }
 
@@ -60,4 +63,12 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
         _nameUser.value = nickname
         _isRegisterEnable.value = CheckInfo(email, password, nickname)
     }
+
+    fun createUser() =
+        viewModelScope.launch {
+            user.password = " "
+            user.id = user.email
+            userUseCase.create(user)
+        }
+
 }

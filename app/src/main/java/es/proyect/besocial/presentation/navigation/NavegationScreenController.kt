@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import es.proyect.besocial.presentation.Login.LoginView
+import es.proyect.besocial.presentation.LostPsswrd.MyLostPasswordView
 import es.proyect.besocial.presentation.Main.MainView
 import es.proyect.besocial.presentation.register.RegisterView
 import javax.inject.Inject
@@ -26,6 +27,9 @@ class NavegationScreenController @Inject constructor() : ViewModel() {
             }
             composable(route = Screen.Main.route) {
                 MainView(navigation)
+            }
+            composable(route = Screen.Lost.route) {
+                MyLostPasswordView()
             }
         }
     }

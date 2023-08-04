@@ -14,6 +14,7 @@ import es.proyect.besocial.presentation.navigation.Screen
 
 @Composable
 fun MainView(navHostController: NavHostController, viewModel: MainViewModel = hiltViewModel()) {
+
     Column(
         Modifier
             .fillMaxSize()
@@ -25,7 +26,7 @@ fun MainView(navHostController: NavHostController, viewModel: MainViewModel = hi
                 popUpTo(Screen.Main.route) { inclusive = true }
             }
         }) {
-            Text(text = "CERRAR SESSION!")
+            Text(text = "CERRAR SESSION! de ${viewModel.userdata.nickName}")
         }
     }
 }

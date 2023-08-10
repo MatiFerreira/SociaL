@@ -9,9 +9,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import es.proyect.besocial.presentation.Components.LoginComponent.TopBar
-import es.proyect.besocial.presentation.Components.RegisterComponent.BodyR
-import es.proyect.besocial.presentation.Components.RegisterComponent.HeaderR
+import es.proyect.besocial.presentation.components.login_component.TopBar
+import es.proyect.besocial.presentation.components.RegisterComponent.BodyR
+import es.proyect.besocial.presentation.components.RegisterComponent.HeaderR
 
 
 @Composable

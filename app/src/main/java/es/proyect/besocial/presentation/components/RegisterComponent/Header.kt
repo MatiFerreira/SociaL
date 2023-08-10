@@ -1,4 +1,4 @@
-package es.proyect.besocial.presentation.Components.RegisterComponent
+package es.proyect.besocial.presentation.components.RegisterComponent
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

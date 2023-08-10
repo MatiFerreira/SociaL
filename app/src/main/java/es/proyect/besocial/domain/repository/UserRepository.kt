@@ -8,4 +8,5 @@ interface UserRepository {
 
     suspend fun create(user: User): Response<Boolean>
     fun getUserEmail(email: String): Flow<User>
+    suspend fun update(user: User): Response<Boolean>
 }

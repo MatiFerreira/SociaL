@@ -12,10 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import es.proyect.besocial.presentation.Components.LoginComponent.BodyL
-import es.proyect.besocial.presentation.Components.LoginComponent.BottomL
-import es.proyect.besocial.presentation.Components.LoginComponent.Header
-import es.proyect.besocial.presentation.Components.LoginComponent.TopBar
+import es.proyect.besocial.presentation.components.login_component.BodyL
+import es.proyect.besocial.presentation.components.login_component.BottomL
+import es.proyect.besocial.presentation.components.login_component.Header
+import es.proyect.besocial.presentation.components.login_component.TopBar
 
 @Composable
 fun LoginView(navigation: NavHostController, viewModel: LoginViewModel = hiltViewModel()) {

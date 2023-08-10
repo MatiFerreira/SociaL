@@ -1,4 +1,4 @@
-package es.proyect.besocial.presentation.Components.LoginComponent
+package es.proyect.besocial.presentation.components.login_component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

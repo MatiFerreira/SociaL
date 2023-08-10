@@ -1,6 +1,5 @@
 package es.proyect.besocial.data.repository
 
-import androidx.compose.runtime.snapshotFlow
 import com.google.firebase.firestore.CollectionReference
 import es.proyect.besocial.domain.model.Response
 import es.proyect.besocial.domain.model.User
@@ -29,6 +28,18 @@ class UserRepositoryImplements @Inject constructor(private val userRef: Collecti
         }
         awaitClose {
             snapshotListener.remove()
+        }
+    }
+
+    override suspend fun update(user: User): Response<Boolean> {
+        return try {
+            val map: MutableMap<String, Any> = HashMap()
+            map["nickName"] = user.nickName
+            map["image"] = user.image
+            userRef.document(user.id).update(map).await()
+            Response.Success(true)
+        } catch (e: Exception) {
+            Response.Failure(e)
         }
     }
 }

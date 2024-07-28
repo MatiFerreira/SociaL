@@ -138,7 +138,7 @@ fun MyBody(viewModel: MainViewModel, navHostController: NavHostController) {
         ) {
             Text(text = "NAME: ", fontFamily = FontFamily(Font(R.font.inderregular)))
             TextField(
-                value = "Mathias  ",
+                value = "Nombre Usuario ",
                 onValueChange = {},
                 enabled = false,
                 maxLines = 1,
@@ -158,7 +158,7 @@ fun MyBody(viewModel: MainViewModel, navHostController: NavHostController) {
         ) {
             Text(text = "SURNAME: ", fontFamily = FontFamily(Font(R.font.inderregular)))
             TextField(
-                value = "Ferreira Ferreira",
+                value = "Apellido",
                 onValueChange = {},
                 enabled = false,
                 maxLines = 1,
@@ -178,7 +178,7 @@ fun MyBody(viewModel: MainViewModel, navHostController: NavHostController) {
         ) {
             Text(text = "EMAIL: ", fontFamily = FontFamily(Font(R.font.inderregular)))
             TextField(
-                value = "maziuseven@gmail.com",
+                value = "Correo electronico",
                 onValueChange = {},
                 enabled = false,
                 maxLines = 1,

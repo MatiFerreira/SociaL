@@ -7,7 +7,7 @@ plugins {
 }
 android {
     namespace 'es.proyect.besocial'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "es.proyect.besocial"

@@ -145,7 +145,6 @@ fun MyBody(viewModel: MainViewModel, navHostController: NavHostController) {
                 singleLine = true,
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = Color.Transparent,
-                    textColor = Color.Black,
                     unfocusedIndicatorColor = Color.Transparent,
                     focusedIndicatorColor = Color.Transparent,
                     disabledIndicatorColor = Color.Transparent
@@ -165,7 +164,6 @@ fun MyBody(viewModel: MainViewModel, navHostController: NavHostController) {
                 singleLine = true,
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = Color.Transparent,
-                    textColor = Color.Black,
                     unfocusedIndicatorColor = Color.Transparent,
                     focusedIndicatorColor = Color.Transparent,
                     disabledIndicatorColor = Color.Transparent
@@ -185,7 +183,6 @@ fun MyBody(viewModel: MainViewModel, navHostController: NavHostController) {
                 singleLine = true,
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = Color.Transparent,
-                    textColor = Color.Black,
                     unfocusedIndicatorColor = Color.Transparent,
                     focusedIndicatorColor = Color.Transparent,
                     disabledIndicatorColor = Color.Transparent
